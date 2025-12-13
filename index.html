@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compution - Developing Mobile Apps & Websites</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            background: linear-gradient(to bottom, #000B24 0%, #002A62 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 0;
+            min-height: 100vh;
+        }
+
+        /* Stars with glimmer effect */
+        .star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #ffeb3b;
+            box-shadow: 0 0 10px #ffeb3b, 0 0 20px rgba(255, 235, 59, 0.5);
+            animation: glimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes glimmer {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px #ffeb3b, 0 0 20px rgba(255, 235, 59, 0.5);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(0.8);
+                box-shadow: 0 0 5px #ffeb3b, 0 0 10px rgba(255, 235, 59, 0.3);
+            }
+        }
+
+        .star-1 { top: 120px; left: 15%; animation-delay: 0s; }
+        .star-2 { top: 140px; right: 10%; animation-delay: 0.3s; }
+        .star-3 { top: 200px; left: 8%; animation-delay: 0.6s; }
+        .star-4 { top: 380px; right: 15%; animation-delay: 0.9s; }
+        .star-5 { top: 480px; left: 12%; animation-delay: 1.2s; }
+        .star-6 { top: 580px; right: 12%; animation-delay: 1.5s; }
+        .star-7 { top: 720px; left: 10%; animation-delay: 0.4s; }
+        .star-8 { top: 800px; right: 8%; animation-delay: 0.7s; }
+        .star-9 { top: 320px; left: 25%; animation-delay: 1s; }
+        .star-10 { top: 420px; right: 25%; animation-delay: 1.3s; }
+        .star-11 { top: 640px; left: 18%; animation-delay: 0.5s; }
+        .star-12 { top: 680px; right: 20%; animation-delay: 1.1s; }
+        .star-13 { top: 180px; left: 35%; animation-delay: 0.8s; }
+        .star-14 { top: 520px; right: 35%; animation-delay: 1.4s; }
+        .star-15 { top: 280px; left: 45%; animation-delay: 0.2s; }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            background-image: url('cloud.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        .cloud-left {
+            top: 250px;
+            left: 5%;
+            animation: float 6s ease-in-out infinite, oscillate 4s ease-in-out infinite;
+        }
+
+        .cloud-right {
+            top: 320px;
+            right: 5%;
+            animation: float 7s ease-in-out infinite 1s, oscillate 5s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-15px) translateX(0); }
+        }
+
+        @keyframes oscillate {
+            0%, 100% { transform: translateX(0) scale(1); }
+            25% { transform: translateX(-10px) scale(0.98); }
+            75% { transform: translateX(10px) scale(1.02); }
+        }
+
+        /* Title - Logo Image */
+        .title {
+            text-align: center;
+            margin: 40px 0 10px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title img {
+            max-width: 100%;
+            width: 500px;
+            height: auto;
+            image-rendering: auto;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #4ade80;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+
+        /* Section styles */
+        .section-title {
+            font-size: 36px;
+            color: #ffeb3b;
+            text-align: center;
+            margin: 40px 0 20px;
+            letter-spacing: 3px;
+        }
+
+        .section-title.clickable,
+        .section-text.clickable {
+            cursor: pointer;
+            transition: transform 0.2s, text-shadow 0.2s;
+        }
+
+        .section-title.clickable:hover,
+        .section-text.clickable:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+        }
+
+        .section-text {
+            font-size: 11px;
+            color: #4ade80;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        /* Portfolio logos */
+        .portfolio-logos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0 30px;
+            flex-wrap: wrap;
+        }
+
+.logo-box {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Text on top of the bricks */
+.logo-box .logo-text {
+    position: absolute;
+    z-index: 2;
+    line-height: 1.1;
+}
+
+/* Brick wall pattern - staggered bricks */
+.logo-box.sky {
+    background-color: #1e40af;
+    background-image:
+        linear-gradient(0deg, rgba(0,0,0,0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.2) 2px, transparent 2px);
+    background-size: 40px 20px, 40px 20px;
+    background-position: 0 0, -20px 0; /* staggered effect */
+}
+
+.logo-box.justeat {
+    background-color: #dc2626;
+    background-image:
+        linear-gradient(0deg, rgba(0,0,0,0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.2) 2px, transparent 2px);
+    background-size: 40px 20px, 40px 20px;
+    background-position: 0 0, -20px 0;
+}
+
+.logo-box.talabat {
+    background-color: #f97316;
+    background-image:
+        linear-gradient(0deg, rgba(0,0,0,0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.2) 2px, transparent 2px);
+    background-size: 40px 20px, 40px 20px;
+    background-position: 0 0, -20px 0;
+}
+
+
+        .logo-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 0 rgba(0,0,0,0.3), 0 0 30px rgba(255, 235, 59, 0.5);
+        }
+
+        .logo-box.sky { background: #1e40af; }
+        .logo-box.justeat { background: #dc2626; }
+        .logo-box.talabat { background: #f97316; }
+
+.logo-box.talabat .logo-text {
+    font-size: 18px;       /* smaller so it fits in one line */
+    line-height: 1;        /* no extra spacing */
+    white-space: nowrap;   /* prevent wrapping */
+    text-align: center;
+}
+
+        .logo-text {
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            word-break: break-word;
+            max-width: 100%;
+        }
+
+        .justeat-text {
+            font-size: 28px;
+            line-height: 1.3;
+        }
+
+        /* Ground block (above portfolio) */
+        .ground-block {
+            width: 100%;
+            max-width: 575px;
+            height: 103px;
+            margin: 0 auto;
+            background-image: url('ground.png');
+            background-position: center;
+            background-repeat: repeat-x;
+            image-rendering: pixelated;
+        }
+
+        /* Tunnel */
+        .tunnel {
+            width: 94px;
+            height: 90px;
+            background-image: url('tunnel.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            bottom: 100px;
+            left: 20%;
+            image-rendering: pixelated;
+            z-index: 5;
+            transform: translateX(-50%);
+        }
+
+        /* Bottom ground - appears once */
+        .bottom-ground {
+            width: infinity;
+            height: 100px;
+            background-image: url('bottom-ground-3.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: repeat-x;
+            margin: 0 auto;
+            padding: 0;
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .title img { width: 350px; }
+            .subtitle { font-size: 9px; letter-spacing: 1px; }
+            .section-title { font-size: 24px; }
+            .section-text { font-size: 9px; }
+            .portfolio-logos { gap: 20px; }
+            .logo-box { width: 100px; height: 100px; }
+            .logo-text { font-size: 22px; }
+            .tunnel { width: 75px; height: 72px; }
+        }
+
+        @media (max-width: 480px) {
+            .title img { width: 280px; }
+            .subtitle { font-size: 7px; }
+            .section-title { font-size: 20px; }
+            .section-text { font-size: 8px; }
+            .portfolio-logos { gap: 15px; flex-direction: column; align-items: center; }
+            .logo-box { width: 120px; height: 120px; }
+            .ground-block { height: 80px; }
+            .tunnel { width: 60px; height: 57px; }
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Stars -->
+    <div class="star star-1"></div>
+    <div class="star star-2"></div>
+    <div class="star star-3"></div>
+    <div class="star star-4"></div>
+    <div class="star star-5"></div>
+    <div class="star star-6"></div>
+    <div class="star star-7"></div>
+    <div class="star star-8"></div>
+    <div class="star star-9"></div>
+    <div class="star star-10"></div>
+    <div class="star star-11"></div>
+    <div class="star star-12"></div>
+    <div class="star star-13"></div>
+    <div class="star star-14"></div>
+    <div class="star star-15"></div>
+
+    <!-- Clouds -->
+    <div class="cloud cloud-left"></div>
+    <div class="cloud cloud-right"></div>
+
+    <!-- Logo & subtitle -->
+    <div class="title">
+        <img src="compution-logo.png" alt="Compution">
+    </div>
+    <p class="subtitle">DEVELOPING MOBILE APPS & WEBSITES</p>
+
+    <!-- About section -->
+    <div class="section-title">ABOUT</div>
+    <p class="section-text">WE FOCUS ON USER EXPERIENCE,<br>QUALITY, AND SUSTAINABILITY</p>
+
+    <!-- Portfolio section -->
+    <div class="section-title portfolio-title">PROJECTS</div>
+    <div class="portfolio-logos">
+        <div class="logo-box sky">
+            <span class="logo-text">sky</span>
+        </div>
+        <div class="logo-box justeat">
+            <span class="logo-text justeat-text">JUST<br>EAT</span>
+        </div>
+        <div class="logo-box talabat">
+            <span class="logo-text">talabat</span>
+        </div>
+    </div>
+
+    <!-- Ground block -->
+    <div class="ground-block"></div>
+
+    <!-- Contact section -->
+    <div class="section-title contact-title clickable" id="contactTitle">CONTACT</div>
+    <p class="section-text contact-text clickable" id="contactText">GET IN TOUCH</p>
+
+</div>
+
+<!-- Bottom section with tunnel and ground -->
+<div style="position: relative; width: 100%; margin-top: 50px;">
+    <!-- Tunnel on bottom-ground -->
+    <div class="tunnel"></div>
+
+    <!-- Bottom ground image -->
+    <div class="bottom-ground"></div>
+</div>
+
+<script>
+    // Copy email to clipboard when contact elements are clicked
+    const email = 'hello@compution.co.uk';
+    const contactTitle = document.getElementById('contactTitle');
+    const contactText = document.getElementById('contactText');
+
+    function copyEmailToClipboard() {
+        navigator.clipboard.writeText(email).then(() => {
+            // Create a temporary notification
+            const notification = document.createElement('div');
+            notification.textContent = 'Hello@Compution.co.uk email copied!';
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #4ade80;
+                color: #000;
+                padding: 20px 40px;
+                border-radius: 8px;
+                font-family: 'Press Start 2P', 'Courier New', monospace;
+                font-size: 12px;
+                z-index: 1000;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                animation: fadeInOut 2s ease-in-out;
+            `;
+
+            document.body.appendChild(notification);
+
+            // Remove notification after 2 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy email:', err);
+            alert('Email: ' + email);
+        });
+    }
+
+    contactTitle.addEventListener('click', copyEmailToClipboard);
+    contactText.addEventListener('click', copyEmailToClipboard);
+</script>
+
+</body>
+</html>
