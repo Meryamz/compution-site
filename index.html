@@ -80,6 +80,8 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
+            cursor: pointer;
+            z-index: 10;
         }
 
         .cloud-left {
@@ -104,6 +106,71 @@
             25% { transform: translateX(-10px) scale(0.98); }
             75% { transform: translateX(10px) scale(1.02); }
         }
+
+        /* Rain droplets */
+        .rain-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 8px;
+            background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.3));
+            border-radius: 50%;
+            opacity: 0;
+            animation: rainFall linear;
+            animation-iteration-count: 0;
+        }
+
+        .raindrop.rain-active {
+            opacity: 0.7;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes rainFall {
+            0% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(400px);
+                opacity: 0;
+            }
+        }
+
+        /* Rain droplets from left cloud */
+        .raindrop-left-1 { left: calc(5% + 20px); top: 318px; animation-duration: 1.2s; animation-delay: 0s; }
+        .raindrop-left-2 { left: calc(5% + 35px); top: 318px; animation-duration: 1.3s; animation-delay: 0.2s; }
+        .raindrop-left-3 { left: calc(5% + 50px); top: 318px; animation-duration: 1.1s; animation-delay: 0.4s; }
+        .raindrop-left-4 { left: calc(5% + 65px); top: 318px; animation-duration: 1.4s; animation-delay: 0.6s; }
+        .raindrop-left-5 { left: calc(5% + 25px); top: 318px; animation-duration: 1.2s; animation-delay: 0.8s; }
+        .raindrop-left-6 { left: calc(5% + 45px); top: 318px; animation-duration: 1.3s; animation-delay: 1s; }
+        .raindrop-left-7 { left: calc(5% + 60px); top: 318px; animation-duration: 1.1s; animation-delay: 0.3s; }
+        .raindrop-left-8 { left: calc(5% + 30px); top: 318px; animation-duration: 1.2s; animation-delay: 0.5s; }
+        .raindrop-left-9 { left: calc(5% + 55px); top: 318px; animation-duration: 1.4s; animation-delay: 0.7s; }
+        .raindrop-left-10 { left: calc(5% + 40px); top: 318px; animation-duration: 1.3s; animation-delay: 0.9s; }
+
+        /* Rain droplets from right cloud */
+        .raindrop-right-1 { right: calc(5% + 20px); top: 388px; animation-duration: 1.3s; animation-delay: 0.1s; }
+        .raindrop-right-2 { right: calc(5% + 35px); top: 388px; animation-duration: 1.2s; animation-delay: 0.3s; }
+        .raindrop-right-3 { right: calc(5% + 50px); top: 388px; animation-duration: 1.4s; animation-delay: 0.5s; }
+        .raindrop-right-4 { right: calc(5% + 65px); top: 388px; animation-duration: 1.1s; animation-delay: 0.7s; }
+        .raindrop-right-5 { right: calc(5% + 25px); top: 388px; animation-duration: 1.3s; animation-delay: 0.9s; }
+        .raindrop-right-6 { right: calc(5% + 45px); top: 388px; animation-duration: 1.2s; animation-delay: 0.2s; }
+        .raindrop-right-7 { right: calc(5% + 60px); top: 388px; animation-duration: 1.4s; animation-delay: 0.4s; }
+        .raindrop-right-8 { right: calc(5% + 30px); top: 388px; animation-duration: 1.1s; animation-delay: 0.6s; }
+        .raindrop-right-9 { right: calc(5% + 55px); top: 388px; animation-duration: 1.3s; animation-delay: 0.8s; }
+        .raindrop-right-10 { right: calc(5% + 40px); top: 388px; animation-duration: 1.2s; animation-delay: 1s; }
 
         /* Title - Logo Image */
         .title {
@@ -287,6 +354,7 @@
             .logo-box.talabat .logo-text { font-size: 9px; }
             .tunnel { width: 75px; height: 72px; bottom: 100px; }
             .cloud { width: 85px; height: 57px; }
+            .raindrop { height: 7px; width: 1.5px; }
             .ground-block {
                 width: 80%;
                 max-width: 80%;
@@ -319,6 +387,7 @@
             }
             .tunnel { display: none; }
             .cloud { width: 68px; height: 46px; }
+            .raindrop { height: 6px; width: 1.5px; }
         }
 
         @keyframes fadeInOut {
@@ -351,6 +420,29 @@
     <!-- Clouds -->
     <div class="cloud cloud-left"></div>
     <div class="cloud cloud-right"></div>
+
+    <!-- Rain droplets from clouds -->
+    <div class="raindrop raindrop-left-1"></div>
+    <div class="raindrop raindrop-left-2"></div>
+    <div class="raindrop raindrop-left-3"></div>
+    <div class="raindrop raindrop-left-4"></div>
+    <div class="raindrop raindrop-left-5"></div>
+    <div class="raindrop raindrop-left-6"></div>
+    <div class="raindrop raindrop-left-7"></div>
+    <div class="raindrop raindrop-left-8"></div>
+    <div class="raindrop raindrop-left-9"></div>
+    <div class="raindrop raindrop-left-10"></div>
+
+    <div class="raindrop raindrop-right-1"></div>
+    <div class="raindrop raindrop-right-2"></div>
+    <div class="raindrop raindrop-right-3"></div>
+    <div class="raindrop raindrop-right-4"></div>
+    <div class="raindrop raindrop-right-5"></div>
+    <div class="raindrop raindrop-right-6"></div>
+    <div class="raindrop raindrop-right-7"></div>
+    <div class="raindrop raindrop-right-8"></div>
+    <div class="raindrop raindrop-right-9"></div>
+    <div class="raindrop raindrop-right-10"></div>
 
     <!-- Logo & subtitle -->
     <div class="title">
@@ -432,6 +524,39 @@
 
     contactTitle.addEventListener('click', copyEmailToClipboard);
     contactText.addEventListener('click', copyEmailToClipboard);
+
+    // Toggle rain on cloud click
+    const cloudLeft = document.querySelector('.cloud-left');
+    const cloudRight = document.querySelector('.cloud-right');
+    const leftRaindrops = document.querySelectorAll('[class*="raindrop-left-"]');
+    const rightRaindrops = document.querySelectorAll('[class*="raindrop-right-"]');
+
+    let leftRainActive = false;
+    let rightRainActive = false;
+
+    cloudLeft.addEventListener('click', () => {
+        leftRainActive = !leftRainActive;
+        leftRaindrops.forEach(drop => {
+            if (leftRainActive) {
+                drop.classList.add('rain-active');
+            } else {
+                // Remove class - animation-iteration-count changes to 0, allowing current cycle to finish
+                drop.classList.remove('rain-active');
+            }
+        });
+    });
+
+    cloudRight.addEventListener('click', () => {
+        rightRainActive = !rightRainActive;
+        rightRaindrops.forEach(drop => {
+            if (rightRainActive) {
+                drop.classList.add('rain-active');
+            } else {
+                // Remove class - animation-iteration-count changes to 0, allowing current cycle to finish
+                drop.classList.remove('rain-active');
+            }
+        });
+    });
 </script>
 
 </body>
