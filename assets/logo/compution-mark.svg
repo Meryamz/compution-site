@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Compution">
+  <title>Compution</title>
+  <desc>A "C" routed like a copper trace on a circuit board, terminating in two solder pads.</desc>
+  <defs>
+    <linearGradient id="computionGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="52%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <path d="M47 13.5H26L13.5 26v12L26 50.5h21"
+        fill="none" stroke="url(#computionGrad)" stroke-width="9"
+        stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10"/>
+  <circle cx="47" cy="13.5" r="4.5" fill="#34d399"/>
+  <circle cx="47" cy="50.5" r="4.5" fill="#8b5cf6"/>
+</svg>
