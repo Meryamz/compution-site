@@ -1060,7 +1060,7 @@ body.is-ready .spy{opacity:1;pointer-events:auto}
 /* Stats */
 .stats{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:1px;
     background:var(--line);
     border:1px solid var(--line);
@@ -1403,19 +1403,26 @@ a.store:hover{
 .client-logo{
     width:64px;height:64px;
     border-radius:17px;
+    overflow:hidden;
     display:grid;
     place-items:center;
-    font-weight:800;
-    font-size:15px;
-    letter-spacing:-.02em;
-    color:#fff;
     flex:none;
+    background:#111;
     transition:transform .55s var(--spring),box-shadow .5s;
 }
+.client-logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
 .client:hover .client-logo{transform:translateY(-4px) scale(1.05)}
-.logo-sky{background:linear-gradient(140deg,#1e40af,#3b82f6);box-shadow:0 12px 28px -14px rgba(59,130,246,.9)}
-.logo-je{background:linear-gradient(140deg,#f97316,#dc2626);box-shadow:0 12px 28px -14px rgba(220,38,38,.9)}
-.logo-pp{background:linear-gradient(140deg,#e11d48,#be123c);box-shadow:0 12px 28px -14px rgba(225,29,72,.9)}
+.logo-sky{background:#0072C6;box-shadow:0 12px 28px -14px rgba(0,114,198,.9)}
+.logo-je{background:#E1251B;box-shadow:0 12px 28px -14px rgba(225,37,27,.9)}
+.logo-pp{background:#FFD420;box-shadow:0 12px 28px -14px rgba(255,212,32,.7)}
+.logo-tb{background:#FF5A00;box-shadow:0 12px 28px -14px rgba(255,90,0,.9)}
+.logo-mw{background:#FFDE3D;box-shadow:0 12px 28px -14px rgba(255,222,61,.7)}
+.logo-fd{background:#111;box-shadow:0 12px 28px -14px rgba(0,0,0,.9)}
 .client h3{font-size:20px;font-weight:700;letter-spacing:-.025em;color:#fff}
 .client p{font-size:14.5px;color:var(--muted);line-height:1.75}
 .client-meta{
@@ -2445,16 +2452,8 @@ form{display:flex;flex-direction:column;gap:18px}
             <span class="stat-lb">Users reached through client apps</span>
         </div>
         <div class="stat">
-            <span class="stat-num" data-count="3">0</span>
-            <span class="stat-lb">In-house products shipped</span>
-        </div>
-        <div class="stat">
             <span class="stat-num">UK<span class="u">.</span></span>
             <span class="stat-lb">Studio, working worldwide</span>
-        </div>
-        <div class="stat">
-            <span class="stat-num">iOS<span class="u">+</span></span>
-            <span class="stat-lb">Android, native where it counts</span>
         </div>
     </div>
 </section>
@@ -2925,15 +2924,15 @@ form{display:flex;flex-direction:column;gap:18px}
         <span class="eyebrow" data-rv="up">Clients</span>
         <h2 class="h2" data-rv="up" style="--d:80ms">Trusted with apps<br>used by <em class="serif grad-text">millions</em></h2>
         <p class="lead" data-rv="up" style="--d:160ms">
-            Alongside our own products, we've delivered mobile work for some of the UK's
-            best-known brands.
+            Alongside our own products, we've delivered mobile work for household-name
+            brands in the UK and beyond.
         </p>
     </div>
 
     <div class="clients" id="clientGrid">
         <article class="card client" data-rv="up">
             <span class="client-ghost" aria-hidden="true">sky</span>
-            <div class="client-logo logo-sky">sky</div>
+            <div class="client-logo logo-sky"><img src="/assets/clients/sky.svg" alt=""></div>
             <h3>Sky</h3>
             <p>Contributed to mobile applications serving millions of daily active users across iOS and Android for one of the UK's largest media companies.</p>
             <div class="client-meta"><span>iOS</span><i class="dot"></i><span>Android</span><i class="dot"></i><span>Media &amp; Entertainment</span></div>
@@ -2941,7 +2940,7 @@ form{display:flex;flex-direction:column;gap:18px}
 
         <article class="card client" data-rv="up" style="--d:100ms">
             <span class="client-ghost" aria-hidden="true">JE</span>
-            <div class="client-logo logo-je">JE</div>
+            <div class="client-logo logo-je"><img src="/assets/clients/justeat.png" alt=""></div>
             <h3>Just Eat</h3>
             <p>Worked with the engineering team on consumer-facing mobile apps, delivering features that improved the ordering experience across multiple markets.</p>
             <div class="client-meta"><span>iOS</span><i class="dot"></i><span>Android</span><i class="dot"></i><span>Marketplace</span></div>
@@ -2949,10 +2948,34 @@ form{display:flex;flex-direction:column;gap:18px}
 
         <article class="card client" data-rv="up" style="--d:200ms">
             <span class="client-ghost" aria-hidden="true">PP</span>
-            <div class="client-logo logo-pp">PP</div>
+            <div class="client-logo logo-pp"><img src="/assets/clients/paypoint.svg" alt=""></div>
             <h3>PayPoint</h3>
             <p>Partnered on mobile and payments technology for a business powering everyday transactions across thousands of UK retail sites.</p>
             <div class="client-meta"><span>iOS</span><i class="dot"></i><span>Android</span><i class="dot"></i><span>Payments &amp; Retail</span></div>
+        </article>
+
+        <article class="card client" data-rv="up" style="--d:80ms">
+            <span class="client-ghost" aria-hidden="true">tb</span>
+            <div class="client-logo logo-tb"><img src="/assets/clients/talabat.svg" alt=""></div>
+            <h3>Talabat</h3>
+            <p>Worked on consumer-facing mobile apps for the Middle East's leading food delivery platform, used by millions of customers across the region.</p>
+            <div class="client-meta"><span>iOS</span><i class="dot"></i><span>Android</span><i class="dot"></i><span>Food delivery</span></div>
+        </article>
+
+        <article class="card client" data-rv="up" style="--d:160ms">
+            <span class="client-ghost" aria-hidden="true">MW</span>
+            <div class="client-logo logo-mw"><img src="/assets/clients/motorway.png" alt=""></div>
+            <h3>Motorway.co.uk</h3>
+            <p>Contributed to mobile product work for the UK's leading online car marketplace — helping people sell their car in a few taps.</p>
+            <div class="client-meta"><span>iOS</span><i class="dot"></i><span>Android</span><i class="dot"></i><span>Automotive</span></div>
+        </article>
+
+        <article class="card client" data-rv="up" style="--d:240ms">
+            <span class="client-ghost" aria-hidden="true">1st</span>
+            <div class="client-logo logo-fd"><img src="/assets/clients/firstdirect.svg" alt=""></div>
+            <h3>First Direct Bank</h3>
+            <p>Partnered on mobile banking experiences for one of the UK's best-known digital banks.</p>
+            <div class="client-meta"><span>iOS</span><i class="dot"></i><span>Android</span><i class="dot"></i><span>Banking</span></div>
         </article>
     </div>
 </section>
