@@ -307,15 +307,6 @@
             document.getElementById('free').hidden = false;
             // Only the matching badge is needed on a phone.
             document.getElementById(ios ? 'android' : 'ios').hidden = true;
-
-            // Phones go straight on to their store, once per visit, so coming
-            // back from the store leaves them on this page. ?stay keeps it.
-            if (/(^|[?&])stay\b/.test(location.search)) return;
-            try {
-                if (sessionStorage.getItem('sent')) return;
-                sessionStorage.setItem('sent', '1');
-            } catch (e) {}
-            location.href = store.href;
         })();
     </script>
 </body>
