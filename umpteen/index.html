@@ -233,7 +233,6 @@
             margin-top: 8px;
         }
     </style>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="7fdc2bec-3fe8-42e4-9aee-a1c7b25a93f0"></script>
 </head>
 <body>
     <main>
@@ -252,10 +251,10 @@
             <p class="free" id="free" hidden>Free download. No sign-up.</p>
 
             <div class="badges" id="stores">
-                <a id="ios" href="https://apps.apple.com/app/id6806872151" aria-label="Download on the App Store" data-umami-event="App Store badge">
+                <a id="ios" href="https://apps.apple.com/app/id6806872151" aria-label="Download on the App Store">
                     <img src="app_store.svg" alt="Download on the App Store" height="52">
                 </a>
-                <a id="android" href="https://play.google.com/store/apps/details?id=com.compution.pocketgames.pocket_games" aria-label="Get it on Google Play" data-umami-event="Google Play badge">
+                <a id="android" href="https://play.google.com/store/apps/details?id=com.compution.pocketgames.pocket_games" aria-label="Get it on Google Play">
                     <img src="google_play.png" alt="Get it on Google Play" height="52">
                 </a>
             </div>
@@ -281,7 +280,6 @@
 
     <footer>
         <p>Made by <a href="/">Compution</a> · <a href="/minigames/support/">Support</a> · <a href="/minigames/privacy/">Privacy policy</a></p>
-        <p>We count visits with cookie-free analytics. No cookies are set and nothing identifies you.</p>
         <p>Apple, the Apple logo, iPhone, iPad and App Store are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</p>
     </footer>
 
@@ -305,11 +303,19 @@
             var get = document.getElementById('get');
             get.href = store.href;
             get.textContent = ios ? 'Get it on the App Store' : 'Get it on Google Play';
-            get.setAttribute('data-umami-event', ios ? 'App Store button' : 'Google Play button');
             get.hidden = false;
             document.getElementById('free').hidden = false;
             // Only the matching badge is needed on a phone.
             document.getElementById(ios ? 'android' : 'ios').hidden = true;
+
+            // Phones go straight on to their store, once per visit, so coming
+            // back from the store leaves them on this page. ?stay keeps it.
+            if (/(^|[?&])stay\b/.test(location.search)) return;
+            try {
+                if (sessionStorage.getItem('sent')) return;
+                sessionStorage.setItem('sent', '1');
+            } catch (e) {}
+            location.href = store.href;
         })();
     </script>
 </body>
