@@ -279,6 +279,13 @@
                 padding: 130px 24px 60px;
             }
         }
+        .support-help { margin: 0 0 40px; text-align: left; }
+        .support-help h2 { font-size: 1.35rem; margin-bottom: 18px; }
+        .support-help details { border-bottom: 1px solid rgba(148,163,184,.25); padding: 16px 0; }
+        .support-help summary { cursor: pointer; font-weight: 600; line-height: 1.5; }
+        .support-help summary:focus-visible { outline: 2px solid #34d399; outline-offset: 5px; }
+        .support-help p { color: #cbd5e1; font-size: .95rem; line-height: 1.75; margin-top: 12px; }
+        .support-help a { color: #6ee7b7; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -318,6 +325,16 @@
     </p>
     <div class="divider"></div>
 
+    <section class="support-help" aria-labelledby="help-heading">
+        <h2 id="help-heading">Quick answers for Umpteen 5.0</h2>
+        <details><summary>What can I spend my points on?</summary><p>Open Shop to unlock individual premium games with your points. Each card shows its price. Earned unlocks stay available on that device even if Plus ends. Points and earned unlocks are local progress, so removing app data or changing devices may lose them. Cricket Smash is a free premium game for everyone.</p></details>
+        <details><summary>What does Plus include?</summary><p>Umpteen Plus unlocks all premium games and removes ads while your subscription is active. Choose monthly or yearly billing in the app; your store shows the price and renewal terms before you confirm. An earned game unlock stays available when Plus ends.</p></details>
+        <details><summary>How do I restore or cancel a subscription?</summary><p>Use Restore purchases in the app with the store account that bought the subscription, on the same platform. Existing permanent Remove Ads purchases can also be restored. Restore does not transfer local points or earned game unlocks. Manage or cancel billing in your <a href="https://support.apple.com/118428">Apple subscriptions</a> or <a href="https://support.google.com/googleplay/answer/7018481">Google Play subscriptions</a>. Deleting the app does not cancel billing.</p></details>
+        <details><summary>Why is a reward video unavailable?</summary><p>Video availability depends on your connection, advertising choices and the ad provider. Rewards also have a cooldown and daily allowance, shown in the app. A reward is added only when the provider confirms you earned it. Eligible ad-free players see a claim button instead. If a completed video did not reward you, tell us the screen, approximate time and device model.</p></details>
+        <details><summary>Online play or rankings will not connect</summary><p>Check your connection and try again from the online screen. You can keep playing solo games while online features are unavailable. Tell us which game or screen failed and what the message said. Never send your password.</p></details>
+        <details><summary>How do I change my privacy and reminder choices?</summary><p>In Settings, Usage privacy controls optional usage analytics, Ads &amp; privacy opens available advertising choices, and Daily discovery controls optional play reminders. To remove your online profile and scores, use Forget me online in Play Together. See our <a href="/minigames/privacy/">privacy policy</a> and <a href="/minigames/delete-data/">deletion help</a> for details.</p></details>
+    </section>
+
     <form class="contact-form" id="supportForm">
         <div class="form-group">
             <label class="form-label" for="supportName">Name</label>
@@ -334,6 +351,9 @@
                 <option value="Bug Report">Bug report</option>
                 <option value="Game Request">Game or feature request</option>
                 <option value="Ads Question">Question about ads</option>
+                <option value="Purchases and Plus">Purchases and Plus</option>
+                <option value="Online Play">Online play or rankings</option>
+                <option value="Privacy Request">Privacy or deletion request</option>
                 <option value="Feedback">Feedback</option>
             </select>
         </div>
